@@ -150,10 +150,10 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
             <div className="accordion-item rounded-md text-black dark:text-white mb-[5px] whitespace-nowrap">
               <button
                 className={`accordion-button toggle flex items-center transition-all py-[9px] ltr:pl-[14px] ltr:pr-[30px] rtl:pr-[14px] rtl:pl-[30px] rounded-md font-medium w-full relative hover:bg-gray-50 text-left dark:hover:bg-[#15203c] ${
-                  openIndex === 0 ? "open" : ""
+                  openIndex === 2 ? "open" : ""
                 }`}
                 type="button"
-                onClick={() => toggleAccordion(0)}
+                onClick={() => toggleAccordion(2)}
               >
                 <i className="material-symbols-outlined transition-all text-gray-500 dark:text-gray-400 ltr:mr-[7px] rtl:ml-[7px] !text-[22px] leading-none relative -top-px">
                   dashboard
@@ -166,7 +166,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
 
               <div
                 className={`accordion-collapse ${
-                  openIndex === 0 ? "open" : "hidden"
+                  openIndex === 2 ? "open" : "hidden"
                 }`}
               >
                 <div className="pt-[4px]">
@@ -249,10 +249,10 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
             <div className="accordion-item rounded-md text-black dark:text-white mb-[5px] whitespace-nowrap">
               <button
                 className={`accordion-button toggle flex items-center transition-all py-[9px] ltr:pl-[14px] ltr:pr-[30px] rtl:pr-[14px] rtl:pl-[30px] rounded-md font-medium w-full relative hover:bg-gray-50 text-left dark:hover:bg-[#15203c] ${
-                  openIndex === 2 ? "open" : ""
+                  openIndex === 3 ? "open" : ""
                 }`}
                 type="button"
-                onClick={() => toggleAccordion(2)}
+                onClick={() => toggleAccordion(3)}
               >
                 <i className="material-symbols-outlined transition-all text-gray-500 dark:text-gray-400 ltr:mr-[7px] rtl:ml-[7px] !text-[22px] leading-none relative -top-px">
                   mail
@@ -265,7 +265,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
 
               <div
                 className={`accordion-collapse ${
-                  openIndex === 2 ? "open" : "hidden"
+                  openIndex === 3 ? "open" : "hidden"
                 }`}
               >
                 <div className="pt-[4px]">
@@ -330,10 +330,10 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
             <div className="accordion-item rounded-md text-black dark:text-white mb-[5px] whitespace-nowrap">
               <button
                 className={`accordion-button toggle flex items-center transition-all py-[9px] ltr:pl-[14px] ltr:pr-[30px] rtl:pr-[14px] rtl:pl-[30px] rounded-md font-medium w-full relative hover:bg-gray-50 text-left dark:hover:bg-[#15203c] ${
-                  openIndex === 29 ? "open" : ""
+                  openIndex === 4 ? "open" : ""
                 }`}
                 type="button"
-                onClick={() => toggleAccordion(29)}
+                onClick={() => toggleAccordion(4)}
               >
                 <i className="material-symbols-outlined transition-all text-gray-500 dark:text-gray-400 ltr:mr-[7px] rtl:ml-[7px] !text-[22px] leading-none relative -top-px">
                   settings
@@ -343,7 +343,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
 
               <div
                 className={`accordion-collapse ${
-                  openIndex === 29 ? "open" : "hidden"
+                  openIndex === 4 ? "open" : "hidden"
                 }`}
               >
                 <div className="pt-[4px]">
