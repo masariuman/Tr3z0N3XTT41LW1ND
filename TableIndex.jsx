@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, Form, Table } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
@@ -643,22 +643,37 @@ const recentOrdersData = [
 ];
 
 export const TablePost = () => {
+  //search
+  const [searchTerm, setSearchTerm] = useState(""); //search
+  const filteredData = recentOrdersData.filter((item) => {
+    return (
+      item.orderID.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.status.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
   const [currentPage, setCurrentPage] = useState(1); //untuk halaman aktif dan halaman yg akan dituju
   const [itemsPerPage, setItemsPerPage] = useState(5); //jumlah data yang ditampilkan per halaman
 
-  const totalPages = Math.ceil(recentOrdersData.length / itemsPerPage); //match.ceil utk hitung ada berapa halaman. misal 52 data, 52/5 = 10.2. jadi ada 10 halaman dan sisa 2 data, jadi diambil 11 dan jadi 11 halaman
+  //pagination ke 1 lagi kalau search
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage); //match.ceil utk hitung ada berapa halaman. misal 52 data, 52/5 = 10.2. jadi ada 10 halaman dan sisa 2 data, jadi diambil 11 dan jadi 11 halaman
 
   const indexOfLastItem = currentPage * itemsPerPage; // nentukan data terakhir diambil
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // nentukan data awal yg diambil
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = recentOrdersData.slice(
+  const currentItems = filteredData.slice(
     //ambil data sesuai halaman dan jumlahnya, start index misal dari data 1, startindex +perpage misalnya index ke 5 jadi 5 data saja. kalau memilih nampilkan 10 data maka data ke 1 + 10 jadi data ke 1 - 10
     startIndex,
     startIndex + itemsPerPage,
   );
   // untuk showing text
-  const totalItems = recentOrdersData.length; //nampilkan total item
+  const totalItems = filteredData.length; //nampilkan total item
   const firstItemNumber = totalItems === 0 ? 0 : indexOfFirstItem + 1; //item pertama. dia +1 karena array dari 0
   const lastItemNumber =
     indexOfLastItem > totalItems ? totalItems : indexOfLastItem; //nomor item terakhir. total item 52 misal, kalau indexlast item lebih dari 52, amil jumlah total saaja
@@ -670,7 +685,10 @@ export const TablePost = () => {
             <h3 className="mb-0">Recent Orders</h3>
 
             <div className="d-flex">
-              <SearchForm />
+              <SearchForm
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+              />
               <span className={classes.textTampilkan}>Tampilkan</span>
               <Form.Select
                 value={itemsPerPage}
